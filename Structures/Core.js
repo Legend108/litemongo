@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const schema = require("../Schemas/schema");
 
-class ScyllaDB {
+class database {
   constructor(mongooseUrl) {
     this.connection = mongoose.connect(mongooseUrl, {
       useUnifiedTopology: true,
@@ -11,13 +11,13 @@ class ScyllaDB {
   }
 
   async set(key, value) {
-    if (!key) throw new Error("Invalid key type", "ScyllaError");
+    if (!key) throw new Error("Invalid key type", "databaseError");
     if (typeof key !== "string")
       throw new Error(
         "The typeof key has to be a string for this version",
-        "ScyllaError"
+        "databaseError"
       );
-    if (!value) throw new Error("Invalid value type", "ScyllaError");
+    if (!value) throw new Error("Invalid value type", "databaseError");
 
     await schema
       .findOneAndUpdate(
@@ -37,7 +37,7 @@ class ScyllaDB {
   }
 
   async find(key) {
-    if (!key) throw new Error("The key has to be provided", "ScyllaError");
+    if (!key) throw new Error("The key has to be provided", "databaseError");
 
     let val = await schema.findOne({ key: key });
 
@@ -51,7 +51,7 @@ class ScyllaDB {
   }
 
   async delete(key) {
-    if(!key) throw new Error("The key has to be provided", "ScyllaError");
+    if(!key) throw new Error("The key has to be provided", "databaseError");
 
     await schema.findOneAndDelete({ key: key });
   }
