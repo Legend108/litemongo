@@ -5,4 +5,4 @@ const schema = new mongoose.Schema({
   value: mongoose.SchemaTypes.String,
 });
 
-module.exports = mongoose.model("ScyllaDB", schema);
+module.exports = mongoose.model("sMongoose", schema);
