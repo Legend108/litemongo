@@ -61,4 +61,4 @@ class database {
   // }
 }
 
-module.exports = ScyllaDB;
+module.exports = database;
