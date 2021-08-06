@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const schema = new mongoose.Schema({
-  key: mongoose.SchemaTypes.String,
+  _id: mongoose.SchemaTypes.String,
   value: mongoose.SchemaTypes.String,
 });
 

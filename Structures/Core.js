@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const schema = require("../Schemas/schema");
 
 class database {
+  /**
+   * Create/Connect to database
+   * @param {string} mongooseUrl - mongo db url
+   */
   constructor(mongooseUrl) {
     this.connection = mongoose.connect(mongooseUrl, {
       useUnifiedTopology: true,
@@ -10,6 +14,11 @@ class database {
     })
   }
 
+  /**
+   * Set value to a key
+   * @param {string} key 
+   * @param {string} value 
+   */
   async set(key, value) {
     if (!key) throw new Error("Invalid key type", "databaseError");
     if (typeof key !== "string")
@@ -22,7 +31,7 @@ class database {
     await schema
       .findOneAndUpdate(
         {
-          key: key,
+          _id: key,
         },
         {
           value: value,
@@ -36,29 +45,44 @@ class database {
       });
   }
 
+  /**
+   * Find a key
+   * @param {string} key 
+   * @returns {{ key: string, value: string }}
+   */
   async find(key) {
     if (!key) throw new Error("The key has to be provided", "databaseError");
 
-    let val = await schema.findOne({ key: key });
+    let val = await schema.findById(key);
 
     return val;
   }
 
+  /**
+   * Find all key
+   * @returns {{ key: string, value: string} [] }
+   */
   async all() {
     let val = await schema.find({});
 
     return val;
   }
 
+  /**
+   * Delete an key
+   * @param {string} key 
+   * @returns {{ key: string, value: string }}
+   */
   async delete(key) {
     if (!key) throw new Error("The key has to be provided", "databaseError");
-
-    await schema.findOneAndDelete({ key: key });
+    return await schema.findOneAndDelete({ _id: key });
   }
 
+  /**
+   * Clear whole database
+   */
   async clear() {
     await schema.deleteMany();
-    
     // Added the clear function
   }
 }
