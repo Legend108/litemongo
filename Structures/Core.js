@@ -7,7 +7,7 @@ class database {
       useUnifiedTopology: true,
       useNewUrlParser: true,
       useFindAndModify: false,
-    });
+    })
   }
 
   async set(key, value) {
@@ -44,21 +44,21 @@ class database {
     return val;
   }
 
-  async all(){
-    let val = await schema.find({})
+  async all() {
+    let val = await schema.find({});
 
     return val;
   }
 
   async delete(key) {
-    if(!key) throw new Error("The key has to be provided", "databaseError");
+    if (!key) throw new Error("The key has to be provided", "databaseError");
 
     await schema.findOneAndDelete({ key: key });
   }
 
-  // async delete(key){
-  //   if(!key) throw new Error()
-  // }
+  async clear() {
+    await schema.deleteMany();
+  }
 }
 
 module.exports = database;
