@@ -5,7 +5,6 @@ class Utils {
 
   parse(key) {
     let v = key.replace(".", "");
-
     return v;
   }
 }
