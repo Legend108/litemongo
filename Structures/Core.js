@@ -58,6 +58,8 @@ class database {
 
   async clear() {
     await schema.deleteMany();
+    
+    // Added the clear function
   }
 }
 
