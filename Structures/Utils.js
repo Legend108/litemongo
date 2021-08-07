@@ -9,4 +9,5 @@ class Utils {
   }
 }
 
+// Idk why this exists lol
 module.exports = Utils;
