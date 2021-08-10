@@ -1,5 +1,1 @@
-# SimpleMongoose
-
-### Simple mongoose is just another mongoose wrapper which makes it easier for beginners to use mongoose!
-
-#### In development
+#### Lite mongo is a mongoose wrapper for easier use of mongoose
