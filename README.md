@@ -1,4 +1,3 @@
-### Lite mongo is a mongoose wrapper for easier use of mongoose
+### Lite mongo is a wrapper to connect to mongoDB as simple as possible
 
-#### Links
-[npm](https://www.npmjs.com/package/lite.mongo)
+#### More info coming soon
